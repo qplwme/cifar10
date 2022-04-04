@@ -1,3 +1,11 @@
+"""
+use cmd line to read data
+
+type in cmd line: 
+    "python <path-to-cifar.py> -p <path-to-cifar-dataset>"
+to run this script
+"""
+
 import numpy as np
 from skimage import io
 import numpy
@@ -11,6 +19,15 @@ class CifarReader:
         self.is_initialized = False
 
     def read_cifar10(self):
+        """
+        returns: train_egs, train_labels, test_egs, test_labels, labels
+            train_egs->list(ndarray): examples of train data
+            train_labels->list(str): labels parallel to egs
+
+            test_egs, test_labels: ...
+
+            labels->list(str): all the possible labels in the dataset
+        """
         parser = argparse.ArgumentParser()
         parser.add_argument('-p', '--absolute_path', default=u"D:\\work\\作业\\大二\\人工智能综合实验\\cifar", type=str, help="get the absolute path to the root of cifar10 dataset")
 
@@ -47,7 +64,9 @@ class CifarReader:
 
         return train_egs, train_labels, test_egs, test_labels, labels
 
-
+"""
+here is what you need to do to call CifarReader
+"""
 # if __name__ == '__main__':
 #     cr = CifarReader()
 #     cr.read_cifar10()
